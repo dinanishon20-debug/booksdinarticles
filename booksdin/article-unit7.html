@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Unit 7: Sport — @booksdin</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#080810; --surface:#0a0a1e; --surface2:#0f0f1e;
+  --border:#1a1a3a; --accent:#818cf8; --accent2:#a5b4fc;
+  --accent3:#6366f1; --text:#f0f0f8; --text-dim:#6a8a9a; --text-muted:#253545;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(1,1,1,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(1,1,1,0.015) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;background:rgba(8,8,16,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--accent);text-decoration:none;}
+.nav-right{display:flex;gap:10px;}
+.nav-btn-link{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--text-dim);text-decoration:none;padding:6px 14px;border:1px solid var(--border);border-radius:6px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.nav-btn-link.tg{color:#229ED9;border-color:rgba(34,158,217,0.3);background:rgba(34,158,217,0.1);}
+
+.channel-banner{position:relative;z-index:10;margin:76px 16px 0;border-radius:18px;overflow:hidden;border:1px solid rgba(56,189,248,0.2);background:linear-gradient(135deg,#080f1a 0%,#0a1525 50%,#080f20 100%);}
+.channel-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(1,1,1,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(129,140,248,0.08) 0%,transparent 60%);pointer-events:none;}
+.channel-content{position:relative;padding:24px 20px;}
+.channel-name{font-size:52px;font-weight:800;letter-spacing:-2px;line-height:1;margin-bottom:4px;background:linear-gradient(90deg,#fff 0%,var(--accent) 60%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.channel-tagline{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--accent);margin-bottom:6px;text-transform:uppercase;}
+.channel-desc{font-size:14px;color:var(--text-dim);margin-bottom:18px;}
+.channel-btns{display:flex;gap:10px;}
+.sub-btn{display:flex;align-items:center;gap:7px;padding:11px 18px;border-radius:11px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.5px;text-decoration:none;flex:1;justify-content:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.sub-btn.telegram{background:#229ED9;color:white;}
+.sub-btn.instagram{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;}
+
+.article-info{position:relative;z-index:10;margin:16px 16px 0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;border-top:2px solid var(--accent);}
+.ai-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;}
+.ai-title{font-size:16px;font-weight:700;margin-bottom:6px;line-height:1.3;}
+.ai-meta{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);}
+
+.stats-row{position:relative;z-index:10;display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;flex:1;min-width:calc(50% - 4px);}
+.stat-num{font-size:28px;font-weight:800;letter-spacing:-1px;color:var(--accent);}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:1px;margin-top:3px;}
+
+.tabs{position:relative;z-index:10;display:flex;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 16px;}
+.tab{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:1px;padding:13px 18px;border:none;background:none;color:var(--text-dim);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;appearance:none;}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+.panel{display:none;position:relative;z-index:10;padding:20px 16px;}
+.panel.active{display:block;}
+
+.search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px 16px;font-family:'DM Mono',monospace;font-size:14px;color:var(--text);outline:none;margin-bottom:10px;-webkit-appearance:none;appearance:none;}
+.search-input::placeholder{color:var(--text-muted);}
+.filter-select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px 16px;font-family:'DM Mono',monospace;font-size:13px;color:var(--text);outline:none;margin-bottom:18px;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236a8a9a' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.vocab-list{display:flex;flex-direction:column;gap:8px;}
+.vocab-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:border-color 0.2s;}
+.vocab-card:active{border-color:var(--accent);}
+.vc-num{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-muted);margin-bottom:4px;}
+.vc-en{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.vc-def{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);line-height:1.5;margin-bottom:5px;}
+.vc-uz-def{font-family:'DM Mono',monospace;font-size:11px;color:#5a9a8a;line-height:1.5;margin-bottom:6px;padding:6px 10px;background:rgba(52,211,153,0.05);border-left:2px solid rgba(52,211,153,0.3);border-radius:0 6px 6px 0;}
+.vc-uz{font-size:13px;font-weight:600;color:var(--accent3);}
+.no-results{text-align:center;padding:40px;font-family:'DM Mono',monospace;color:var(--text-muted);font-size:13px;}
+
+.flashcard-container{display:flex;flex-direction:column;align-items:center;gap:20px;}
+.fc-top{width:100%;display:flex;justify-content:space-between;align-items:center;}
+.fc-counter{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);letter-spacing:2px;}
+.progress-bar{width:100%;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width 0.4s;}
+.flashcard{width:100%;min-height:260px;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:all 0.3s;}
+.flashcard.show-back{background:linear-gradient(135deg,#0a1520,#0f1525);border-color:var(--accent);box-shadow:0 0 30px rgba(1,1,1,0.1);}
+.fc-side{width:100%;}
+.fc-side.back{display:none;}
+.flashcard.show-back .fc-side.front{display:none;}
+.flashcard.show-back .fc-side.back{display:block;}
+.fc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--text-muted);margin-bottom:14px;text-transform:uppercase;}
+.fc-word{font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:12px;color:var(--text);}
+.fc-hint{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);line-height:1.6;}
+.fc-uz{font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-0.5px;margin-bottom:8px;}
+.fc-uz-def-back{font-family:'DM Mono',monospace;font-size:11px;color:#5a9a8a;line-height:1.6;margin-top:8px;padding:8px 12px;background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.15);border-radius:8px;}
+.fc-tap{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:1px;margin-top:16px;}
+.fc-nav{display:flex;gap:8px;width:100%;}
+.nav-btn{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 10px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text);cursor:pointer;letter-spacing:0.5px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;appearance:none;flex:1;text-align:center;}
+.nav-btn.primary{background:var(--accent);border-color:var(--accent);color:#080810;font-weight:700;}
+
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.quiz-score{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);}
+.quiz-score span{color:var(--accent);}
+.q-progress{width:120px;height:3px;background:var(--border);border-radius:2px;}
+.q-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width 0.4s;}
+.quiz-question{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 18px;margin-bottom:14px;border-top:2px solid var(--accent);}
+.q-type{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--accent);margin-bottom:10px;text-transform:uppercase;}
+.q-text{font-size:18px;font-weight:700;line-height:1.4;}
+.q-sub{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.option-btn{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:14px 16px;font-family:'Syne',sans-serif;font-size:13px;color:var(--text);cursor:pointer;text-align:left;line-height:1.4;width:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;appearance:none;}
+.option-btn.correct{background:rgba(1,1,1,0.06);border-color:var(--accent);color:var(--accent);}
+.option-btn.wrong{background:rgba(129,140,248,0.08);border-color:var(--accent2);color:var(--accent2);}
+.quiz-feedback{font-family:'DM Mono',monospace;font-size:12px;padding:14px 16px;border-radius:10px;margin-bottom:14px;display:none;text-align:center;line-height:1.5;}
+.quiz-feedback.correct{background:rgba(56,189,248,0.06);color:var(--accent);border:1px solid rgba(56,189,248,0.2);}
+.quiz-feedback.wrong{background:rgba(129,140,248,0.06);color:var(--accent2);border:1px solid rgba(129,140,248,0.2);}
+.quiz-actions{text-align:center;}
+.next-btn{background:var(--accent);border:none;border-radius:11px;padding:14px 32px;font-family:'DM Mono',monospace;font-size:12px;color:#080810;font-weight:700;cursor:pointer;letter-spacing:1px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;appearance:none;display:none;}
+.quiz-result{text-align:center;padding:40px 20px;display:none;}
+.result-emoji{font-size:56px;margin-bottom:16px;}
+.result-score{font-size:48px;font-weight:800;letter-spacing:-2px;margin-bottom:8px;}
+.result-score span{color:var(--accent);}
+.result-msg{font-family:'DM Mono',monospace;color:var(--text-dim);font-size:12px;margin-bottom:24px;line-height:1.6;}
+.restart-btn{background:var(--accent);border:none;border-radius:10px;padding:14px 28px;font-family:'DM Mono',monospace;font-size:12px;color:#080810;font-weight:700;cursor:pointer;letter-spacing:1px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;}
+
+/* ---- AUDIO + FAV BUTTONS ---- */
+.speak-mini-btn,.fav-btn{background:none;border:none;cursor:pointer;font-size:16px;padding:2px 4px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.speak-mini-btn:active,.fav-btn:active{transform:scale(1.2);}
+
+/* ---- FAVORITES ---- */
+#panel-favs .no-results{text-align:center;padding:40px;font-family:'DM Mono',monospace;color:var(--text-muted);font-size:13px;line-height:2;}
+
+/* ---- ACHIEVEMENTS ---- */
+.ach-grid{display:flex;flex-direction:column;gap:10px;}
+.ach-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;border:1px solid var(--border);background:var(--surface);}
+.ach-card.unlocked{border-color:var(--accent);background:linear-gradient(90deg,rgba(56,189,248,0.04),transparent);}
+.ach-card.locked{opacity:0.4;filter:grayscale(0.5);}
+.ach-icon{font-size:28px;min-width:36px;text-align:center;}
+.ach-title{font-size:14px;font-weight:700;margin-bottom:3px;}
+.ach-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);}
+.ach-badge{margin-left:auto;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--accent);background:rgba(1,1,1,0.08);border:1px solid rgba(56,189,248,0.2);padding:3px 8px;border-radius:4px;white-space:nowrap;}
+
+/* ---- TOAST ---- */
+#ach-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#0a1520;border:1px solid var(--accent);border-radius:12px;padding:12px 20px;font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);z-index:999;transition:transform 0.3s;white-space:nowrap;box-shadow:0 4px 24px rgba(0,0,0,0.5);}
+#ach-toast.show{transform:translateX(-50%) translateY(0);}
+
+/* ---- WRITING ---- */
+.write-container{display:flex;flex-direction:column;gap:14px;}
+.write-progress{width:100%;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.write-prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width 0.4s;}
+.write-counter{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:2px;}
+.write-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 18px;border-top:2px solid var(--accent);}
+.write-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin-bottom:10px;}
+.write-uz{font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;}
+.write-def{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);line-height:1.6;margin-bottom:6px;}
+.write-uz-def{font-family:'DM Mono',monospace;font-size:11px;color:#5a9a8a;line-height:1.6;margin-bottom:12px;padding:6px 10px;background:rgba(52,211,153,0.05);border-left:2px solid rgba(52,211,153,0.3);border-radius:0 6px 6px 0;}
+.speak-btn{background:none;border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;}
+.write-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-family:'DM Mono',monospace;font-size:16px;color:var(--text);outline:none;-webkit-appearance:none;letter-spacing:0.5px;}
+.write-input:focus{border-color:var(--accent);}
+.write-feedback{font-family:'DM Mono',monospace;font-size:13px;padding:12px 16px;border-radius:10px;display:none;line-height:1.5;}
+.write-feedback.correct{background:rgba(56,189,248,0.06);color:var(--accent);border:1px solid rgba(56,189,248,0.2);}
+.write-feedback.wrong{background:rgba(129,140,248,0.08);color:var(--accent2);border:1px solid rgba(129,140,248,0.2);}
+.write-actions{display:flex;gap:8px;}
+.write-check-btn{flex:2;background:var(--accent);border:none;border-radius:10px;padding:13px;font-family:'DM Mono',monospace;font-size:12px;color:#080810;font-weight:700;cursor:pointer;letter-spacing:1px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;}
+.write-skip-btn{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-appearance:none;}
+.write-result{text-align:center;padding:40px 20px;}
+
+footer{text-align:center;padding:30px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);line-height:2;border-top:1px solid var(--border);margin-top:20px;position:relative;z-index:10;}
+footer a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="articles-units.html" class="nav-btn-link">← Maqolalar</a>
+  <a href="https://t.me/+WsS7Xf4HBFsxZGI6" target="_blank" class="nav-btn-link tg">Telegram</a>
+</nav>
+
+<div class="channel-banner">
+  <div class="channel-banner::before"></div>
+  <div class="channel-content">
+    <div class="channel-tagline">KITOBLAR · BILIM · O'SISH</div>
+    <div class="channel-name">@booksdin</div>
+    <div class="channel-desc">Obuna bo'ling va har kuni yangi bilim oling!</div>
+    <div class="channel-btns">
+      <a href="https://t.me/+WsS7Xf4HBFsxZGI6" target="_blank" class="sub-btn telegram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+        Telegram
+      </a>
+      <a href="https://www.instagram.com/booksdin?igsh=MWhjN2JhM3pnZG5nZQ%3D%3D&utm_source=qr" target="_blank" class="sub-btn instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="article-info">
+  <div class="ai-tag">Sport · Futbol · Musobaqa</div>
+  <div class="ai-title">Unit 7: Sport</div>
+  <div class="ai-meta">Vocabulary Study · 20 ta so'z · Inglizcha + O'zbekcha ta'rif</div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">JAMI SO'ZLAR</div></div>
+  <div class="stat-card"><div class="stat-num" id="learnedCount">0</div><div class="stat-label">O'RGANILDI</div></div>
+  <div class="stat-card"><div class="stat-num" id="quizScoreStat">—</div><div class="stat-label">QUIZ NATIJA</div></div>
+  <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">REJIM</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" id="tab-search" onclick="showTab('search')">🔍 QIDIRUV</button>
+  <button class="tab" id="tab-flashcard" onclick="showTab('flashcard')">🃏 FLASHCARD</button>
+  <button class="tab" id="tab-quiz" onclick="showTab('quiz')">🎯 QUIZ</button>
+  <button class="tab" id="tab-writing" onclick="showTab('writing')">✍️ YOZISH</button>
+  <button class="tab" id="tab-favs" onclick="showTab('favs')">⭐ SEVIMLI (0)</button>
+  <button class="tab" id="tab-achievements" onclick="showTab('achievements')">🏆 YUTUQ (0/7)</button>
+</div>
+
+<!-- SEARCH PANEL -->
+<div class="panel active" id="panel-search">
+  <input class="search-input" type="text" id="searchInput" placeholder="So'z yoki tarjima izlang..." oninput="filterVocab()">
+  <select class="filter-select" id="filterSelect" onchange="filterVocab()">
+    <option value="all">Barchasi</option>
+    <option value="en">Inglizcha</option>
+    <option value="uz">O'zbekcha</option>
+  </select>
+  <div class="vocab-list" id="vocabList"></div>
+  <div class="no-results" id="noResults" style="display:none">Hech narsa topilmadi 🔍</div>
+</div>
+
+<!-- FLASHCARD PANEL -->
+<div class="panel" id="panel-flashcard">
+  <div class="flashcard-container">
+    <div class="fc-top">
+      <div class="fc-counter" id="fcCounter">1 / 20</div>
+      <button class="nav-btn" onclick="shuffleCards()" style="flex:0;padding:10px 16px;">🔀 Aralash</button>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="fcProgress" style="width:5.0%"></div></div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="fc-side front">
+        <div class="fc-label">INGLIZCHA SO'Z</div>
+        <div class="fc-word" id="fcWord">—</div>
+        <div class="fc-hint" id="fcHint"></div>
+        <div class="fc-tap">👆 BOSIB TARJIMANI KO'R</div>
+      </div>
+      <div class="fc-side back">
+        <div class="fc-label">O'ZBEKCHA</div>
+        <div class="fc-uz" id="fcUz">—</div>
+        <div class="fc-uz-def-back" id="fcUzDef"></div>
+        <div class="fc-hint" id="fcDef"></div>
+        <div class="fc-tap">👆 ORQAGA QAYTISH</div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="nav-btn" onclick="prevCard()">← OLDINGI</button>
+      <button class="nav-btn primary" id="learnBtn" onclick="markLearned()">✓ O'RGANDIM</button>
+      <button class="nav-btn" onclick="nextCard()">KEYINGI →</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ PANEL -->
+<div class="panel" id="panel-quiz">
+  <div class="quiz-header">
+    <div class="quiz-score">To'g'ri: <span id="correctCount">0</span>/<span id="totalAsked">0</span></div>
+    <div class="q-progress"><div class="q-progress-fill" id="qProgressFill" style="width:0%"></div></div>
+  </div>
+  <div id="quizContent">
+    <div class="quiz-question">
+      <div class="q-type" id="qType">SAVOL TURI</div>
+      <div class="q-text" id="qText">Savol yuklanmoqda...</div>
+      <div class="q-sub" id="qSub"></div>
+    </div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <div class="quiz-actions">
+      <button class="next-btn" id="nextQuizBtn" onclick="nextQuiz()">KEYINGI SAVOL →</button>
+    </div>
+  </div>
+  <div id="quizResult" class="quiz-result"></div>
+</div>
+
+<!-- WRITING PANEL -->
+<div class="panel" id="panel-writing">
+  <div style="text-align:center;padding:40px;font-family:'DM Mono',monospace;color:var(--text-muted)">Yuklanmoqda...</div>
+</div>
+
+<!-- FAVS PANEL -->
+<div class="panel" id="panel-favs">
+  <div class="no-results">Hali sevimli so'z yo'q.<br>🔍 Qidiruvda ☆ belgisini bosing!</div>
+</div>
+
+<!-- ACHIEVEMENTS PANEL -->
+<div class="panel" id="panel-achievements">
+  <div style="text-align:center;padding:40px;font-family:'DM Mono',monospace;color:var(--text-muted)">Yuklanmoqda...</div>
+</div>
+
+<div id="ach-toast"></div>
+
+<footer>
+  <a href="https://t.me/+WsS7Xf4HBFsxZGI6" target="_blank">📱 Telegram: @booksdin</a> &nbsp;·&nbsp;
+  <a href="https://www.instagram.com/booksdin?igsh=MWhjN2JhM3pnZG5nZQ%3D%3D&utm_source=qr" target="_blank">📸 Instagram: @booksdin</a><br>
+  Vocabulary Study · Unit 7: Sport · 20 ta so'z
+</footer>
+
+<script>
+// vocab: {id, en, pos, def, uzDef, uz}
+var vocab = [
+  {id:1,en:'away',pos:'adjective',def:'Of a sporting event played at the opponents\' ground.',uzDef:'Raqibning maydonida o\'tkaziladigan sport musobaqasiga oid.',uz:'Tashqarida / mehmon jamoasi'},
+  {id:2,en:'club',pos:'noun',def:'A group of people who meet to take part in an activity such as a sport.',uzDef:'Sport kabi faoliyatda qatnashish uchun yig\'iladigan odamlar guruhi.',uz:'Klub / jamoa'},
+  {id:3,en:'colours',pos:'noun plural',def:'The colours used on clothes or flags to represent a team or group.',uzDef:'Jamoa yoki guruhni ifodalash uchun kiyim yoki bayroqlarda ishlatiladigan ranglar.',uz:'Jamoaning ranglari'},
+  {id:4,en:'fixture',pos:'noun',def:'A sports event; the day and time arranged for a sports event.',uzDef:'Sport musobaqasi; sport tadbiri uchun belgilangan kun va vaqt.',uz:'Belgilangan o\'yin'},
+  {id:5,en:'foul',pos:'noun',def:'In sport, an act that is not allowed by the rules and often causes injury.',uzDef:'Sportda qoidalar bilan taqiqlangan va ko\'pincha jarohat yetkazadigan harakat.',uz:'Qoidabuzarlik / faul'},
+  {id:6,en:'ground',pos:'noun',def:'An area of land used for a particular sport.',uzDef:'Ma\'lum sport uchun mo\'ljallangan er maydoni.',uz:'Stadion / maydon'},
+  {id:7,en:'home',pos:'adjective',def:'Of a sporting event played at the team\'s own ground.',uzDef:'Jamoaning o\'z maydonida o\'tkaziladigan sport musobaqasiga oid.',uz:'Uy o\'yini'},
+  {id:8,en:'hooligan',pos:'noun',def:'A person who behaves in a noisy, violent way in public, often relating to football.',uzDef:'Ko\'pincha futbolga bog\'liq holda ommaviy joylarda shovqinli va zo\'ravon harakat qiluvchi kishi.',uz:'Xuligan / bezori'},
+  {id:9,en:'leg',pos:'noun',def:'In sport, one stage of a series of matches in a large competition.',uzDef:'Sportda katta musobaqadagi bir qator o\'yinlarning bir bosqichi.',uz:'Tur / bosqich'},
+  {id:10,en:'partisan',pos:'adjective',def:'Showing strong support for one group without attention to others\' opinions.',uzDef:'Boshqalarning fikrini inobatga olmagan holda bir guruhni kuchli qo\'llab-quvvatlash.',uz:'Bir taraflama / partiyaviy'},
+  {id:11,en:'pitch',pos:'noun',def:'An area of ground marked out for playing a game such as football.',uzDef:'Futbol kabi o\'yin uchun belgilab qo\'yilgan er maydoni.',uz:'O\'yin maydoni'},
+  {id:12,en:'qualifying',pos:'adjective',def:'Of an early stage of a competition that must be completed before going on to later stages.',uzDef:'Keyingi bosqichlarga o\'tish uchun bajarilishi shart bo\'lgan musobaqaning dastlabki bosqichiga oid.',uz:'Saralash / kvalifikatsiya'},
+  {id:13,en:'red card',pos:'noun',def:'A card shown to a player who has seriously broken the rules, meaning they must leave the pitch.',uzDef:'Qoidani jiddiy buzgan o\'yinchiga ko\'rsatiladigan karta; o\'yinchi maydonni tark etishi kerak.',uz:'Qizil karta'},
+  {id:14,en:'referee',pos:'noun',def:'The official whose job it is to make sure that the rules of the game are followed.',uzDef:'O\'yin qoidalarining bajarilishini ta\'minlash vazifasini bajaruvchi rasmiy shaxs.',uz:'Hakam / referi'},
+  {id:15,en:'riot police',pos:'noun',def:'Police specially trained to deal with riots.',uzDef:'Ommaviy tartibsizliklarni bartaraf etish uchun maxsus tayyorlangan politsiya.',uz:'Ommaviy tartibsizliklar politsiyasi'},
+  {id:16,en:'running battle',pos:'noun',def:'A continuous or long-lasting fight.',uzDef:'Uzoq davom etadigan to\'xtovsiz kurash.',uz:'Uzluksiz kurash'},
+  {id:17,en:'soccer',pos:'noun',def:'A more formal word for football.',uzDef:'Futbol uchun rasmiyroq so\'z.',uz:'Futbol'},
+  {id:18,en:'stand',pos:'noun',def:'The area in a sports ground where spectators stand or sit.',uzDef:'Sport maydonida tomoshabinlar turadigan yoki o\'tiradigan joy.',uz:'Tribuna'},
+  {id:19,en:'tackle',pos:'verb',def:'In football and hockey, to try to take the ball from an opposing player.',uzDef:'Futbol va xokeyde raqib o\'yinchidan to\'pni olishga urinmoq.',uz:'To\'p olmoq'},
+  {id:20,en:'yellow card',pos:'noun',def:'A card shown to a player as a warning that their behaviour must improve.',uzDef:'O\'yinchiga xulq-atvori yaxshilanishi kerakligi haqida ogohlantirish sifatida ko\'rsatiladigan karta.',uz:'Sariq karta'}
+];
+
+// TABS
+function showTab(name) {
+  var tabs = document.querySelectorAll('.tab');
+  var panels = document.querySelectorAll('.panel');
+  for (var i=0;i<tabs.length;i++) tabs[i].classList.remove('active');
+  for (var i=0;i<panels.length;i++) panels[i].classList.remove('active');
+  document.getElementById('tab-'+name).classList.add('active');
+  document.getElementById('panel-'+name).classList.add('active');
+  if (name==='flashcard') renderFlashcard();
+  if (name==='quiz') initQuiz();
+  if (name==='writing') initWriting();
+  if (name==='achievements') renderAchievements();
+  if (name==='favs') renderFavPanel();
+}
+
+// SEARCH
+function renderVocabList(items) {
+  var list = document.getElementById('vocabList');
+  var html = '';
+  for (var i=0;i<items.length;i++) html += buildVocabCard(items[i]);
+  list.innerHTML = html;
+  document.getElementById('noResults').style.display = items.length===0?'block':'none';
+}
+function filterVocab() {
+  var q = document.getElementById('searchInput').value.toLowerCase();
+  var f = document.getElementById('filterSelect').value;
+  var filtered = [];
+  for (var i=0;i<vocab.length;i++) {
+    var v = vocab[i];
+    if (!q) { filtered.push(v); continue; }
+    if (f==='en' && (v.en.toLowerCase().indexOf(q)>=0||v.def.toLowerCase().indexOf(q)>=0)) { filtered.push(v); continue; }
+    if (f==='uz' && (v.uz.toLowerCase().indexOf(q)>=0||v.uzDef.toLowerCase().indexOf(q)>=0)) { filtered.push(v); continue; }
+    if (f==='all' && (v.en.toLowerCase().indexOf(q)>=0||v.uz.toLowerCase().indexOf(q)>=0||v.def.toLowerCase().indexOf(q)>=0||v.uzDef.toLowerCase().indexOf(q)>=0)) { filtered.push(v); continue; }
+  }
+  renderVocabList(filtered);
+}
+
+// FLASHCARD
+var fcIndex = 0, fcOrder = [], learned = {};
+for (var i=0;i<vocab.length;i++) fcOrder.push(i);
+
+function renderFlashcard() {
+  var card = document.getElementById('flashcard');
+  card.classList.remove('show-back');
+  var v = vocab[fcOrder[fcIndex]];
+  document.getElementById('fcWord').textContent = v.en + '  ['+v.pos+']';
+  document.getElementById('fcHint').textContent = v.def;
+  document.getElementById('fcUz').textContent = v.uz;
+  document.getElementById('fcUzDef').textContent = v.uzDef;
+  document.getElementById('fcDef').textContent = v.def;
+  document.getElementById('fcCounter').textContent = (fcIndex+1)+' / '+vocab.length;
+  document.getElementById('fcProgress').style.width = (((fcIndex+1)/vocab.length)*100)+'%';
+  var lb = document.getElementById('learnBtn');
+  lb.style.opacity = learned[fcOrder[fcIndex]] ? '0.4' : '1';
+}
+function flipCard() { document.getElementById('flashcard').classList.toggle('show-back'); }
+function nextCard() { if(fcIndex<vocab.length-1){fcIndex++;renderFlashcard();} }
+function prevCard() { if(fcIndex>0){fcIndex--;renderFlashcard();} }
+function markLearned() {
+  learned[fcOrder[fcIndex]] = true;
+  var count=0; for(var k in learned) if(learned[k]) count++;
+  learnedCount = count;
+  document.getElementById('learnedCount').textContent = count;
+  document.getElementById('learnBtn').style.opacity = '0.4';
+  checkAchievements();
+  setTimeout(nextCard,300);
+}
+function shuffleCards() {
+  for(var i=fcOrder.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcOrder[i];fcOrder[i]=fcOrder[j];fcOrder[j]=tmp;}
+  fcIndex=0; renderFlashcard();
+}
+
+// QUIZ
+var quizPool=[], quizIdx=0, correctCount=0, totalAsked=0;
+window._lastQuizScore=0; window._quizDone=false;
+
+function initQuiz() {
+  quizPool = shuffleArray(vocab.slice());
+  quizIdx=0; correctCount=0; totalAsked=0;
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizContent').style.display='block';
+  document.getElementById('correctCount').textContent='0';
+  document.getElementById('totalAsked').textContent='0';
+  document.getElementById('qProgressFill').style.width='0%';
+  renderQuizQ();
+}
+function renderQuizQ() {
+  if(quizIdx>=quizPool.length){showQuizResult();return;}
+  var v=quizPool[quizIdx];
+  var type=Math.floor(Math.random()*3);
+  var fb=document.getElementById('quizFeedback');
+  fb.style.display='none'; fb.className='quiz-feedback';
+  document.getElementById('nextQuizBtn').style.display='none';
+  document.getElementById('qProgressFill').style.width=((quizIdx/quizPool.length)*100)+'%';
+  var opts, qtxt, qsub='';
+  if(type===0){
+    document.getElementById('qType').textContent='TARJIMANI TOPING';
+    document.getElementById('qText').textContent=v.en;
+    document.getElementById('qSub').textContent=v.def;
+    opts=getOpts(v,'uz');
+  } else if(type===1){
+    document.getElementById('qType').textContent="SO'ZNI TOPING";
+    document.getElementById('qText').textContent=v.uz;
+    document.getElementById('qSub').textContent=v.uzDef;
+    opts=getOpts(v,'en');
+  } else {
+    document.getElementById('qType').textContent="TA'RIFDAN SO'Z TOPING";
+    document.getElementById('qText').textContent=v.def;
+    document.getElementById('qSub').textContent=v.uzDef;
+    opts=getOpts(v,'en');
+  }
+  var html='';
+  for(var i=0;i<opts.length;i++){
+    html+='<button class="option-btn" onclick="checkAnswer(this,\''+opts[i].replace(/'/g,"\\'")+'\',\''+
+      (type===0?v.uz:v.en).replace(/'/g,"\\'")+'\')">'+opts[i]+'</button>';
+  }
+  document.getElementById('quizOptions').innerHTML=html;
+}
+function getOpts(v,field){
+  var others=vocab.filter(function(x){return x.id!==v.id;});
+  others=shuffleArray(others).slice(0,3);
+  var arr=[v[field]];
+  for(var i=0;i<others.length;i++) arr.push(others[i][field]);
+  return shuffleArray(arr);
+}
+function checkAnswer(btn,chosen,correct){
+  var btns=document.querySelectorAll('.option-btn');
+  for(var i=0;i<btns.length;i++) btns[i].disabled=true;
+  var fb=document.getElementById('quizFeedback');
+  totalAsked++;
+  document.getElementById('totalAsked').textContent=totalAsked;
+  if(chosen===correct){
+    correctCount++;
+    document.getElementById('correctCount').textContent=correctCount;
+    btn.classList.add('correct');
+    fb.className='quiz-feedback correct';
+    fb.textContent='✅ To\'g\'ri!';
+  } else {
+    btn.classList.add('wrong');
+    for(var i=0;i<btns.length;i++) if(btns[i].textContent===correct) btns[i].classList.add('correct');
+    fb.className='quiz-feedback wrong';
+    fb.textContent='❌ Noto\'g\'ri. To\'g\'ri: '+correct;
+  }
+  fb.style.display='block';
+  document.getElementById('nextQuizBtn').style.display='inline-block';
+  quizIdx++;
+}
+function nextQuiz(){renderQuizQ();}
+function showQuizResult(){
+  document.getElementById('quizContent').style.display='none';
+  var r=document.getElementById('quizResult');
+  r.style.display='block';
+  var pct=Math.round((correctCount/quizPool.length)*100);
+  window._lastQuizScore=correctCount; window._quizDone=true;
+  document.getElementById('quizScoreStat').textContent=correctCount+'/'+quizPool.length;
+  r.innerHTML='<div class="result-emoji">'+(pct>=80?'🎉':pct>=50?'💪':'📚')+'</div>'+
+    '<div class="result-score"><span>'+correctCount+'</span>/'+quizPool.length+'</div>'+
+    '<div class="result-msg">'+pct+'% to\'g\'ri · Juda '+( pct>=80?'zo\'r!':pct>=50?'yaxshi!':'mashq kerak!')+'</div>'+
+    '<button class="restart-btn" onclick="initQuiz()">🔄 QAYTA BOSHLASH</button>';
+  checkAchievements();
+}
+
+// FEATURES
+var ARTICLE_ID = 'unit7';
+var favorites = (function(){try{return JSON.parse(localStorage.getItem('booksdin_favs_'+ARTICLE_ID)||'[]');}catch(e){return [];}})();
+var unlockedAchievements = (function(){try{return JSON.parse(localStorage.getItem('booksdin_ach_'+ARTICLE_ID)||'[]');}catch(e){return [];}})();
+var learnedCount = 0;
+
+function speakWord(text) {
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.85; u.pitch=1;
+  window.speechSynthesis.speak(u);
+}
+function toggleFav(id) {
+  var idx=favorites.indexOf(id);
+  if(idx===-1) favorites.push(id); else favorites.splice(idx,1);
+  try{localStorage.setItem('booksdin_favs_'+ARTICLE_ID,JSON.stringify(favorites));}catch(e){}
+  updateFavBtns(); checkAchievements();
+}
+function isFav(id){return favorites.indexOf(id)!==-1;}
+function updateFavBtns(){
+  var btns=document.querySelectorAll('.fav-btn');
+  for(var i=0;i<btns.length;i++){
+    var id=parseInt(btns[i].getAttribute('data-id'));
+    btns[i].textContent=isFav(id)?'⭐':'☆';
+    btns[i].style.color=isFav(id)?'#fbbf24':'';
+  }
+  var favTab=document.getElementById('tab-favs');
+  if(favTab) favTab.textContent='⭐ SEVIMLI ('+favorites.length+')';
+  renderFavPanel();
+}
+function renderFavPanel(){
+  var panel=document.getElementById('panel-favs');
+  if(!panel) return;
+  if(favorites.length===0){panel.innerHTML='<div class="no-results">Hali sevimli so\'z yo\'q.<br>☆ belgisini bosing!</div>';return;}
+  var items=vocab.filter(function(v){return favorites.indexOf(v.id)!==-1;});
+  var html='<div class="vocab-list">';
+  for(var i=0;i<items.length;i++) html+=buildVocabCard(items[i]);
+  html+='</div>';
+  panel.innerHTML=html;
+}
+
+var ACHIEVEMENTS=[
+  {id:'first_fav',icon:'⭐',title:'Birinchi sevimli',desc:'1 ta so\'zni sevimlilarga qo\'shding',check:function(){return favorites.length>=1;}},
+  {id:'fav5',icon:'💛',title:'5 ta sevimli',desc:'5 ta so\'zni sevimlilarga qo\'shding',check:function(){return favorites.length>=5;}},
+  {id:'learn5',icon:'📚',title:'O\'quvchi',desc:'5 ta so\'zni o\'rganding',check:function(){return learnedCount>=5;}},
+  {id:'learn_all',icon:'🏆',title:'Master!',desc:'Barcha so\'zlarni o\'rganding',check:function(){return learnedCount>=vocab.length;}},
+  {id:'quiz_perfect',icon:'🎯',title:'Mukammal quiz',desc:'Quizda 20/20 oldingiz',check:function(){return window._lastQuizScore>=20;}},
+  {id:'quiz_first',icon:'✅',title:'Birinchi quiz',desc:'Birinchi quizni yakunladingiz',check:function(){return window._quizDone;}},
+  {id:'write3',icon:'✍️',title:'Yozuvchi',desc:'3 ta so\'zni to\'g\'ri yozdingiz',check:function(){return window._writeCorrect>=3;}},
+];
+function checkAchievements(){
+  for(var i=0;i<ACHIEVEMENTS.length;i++){
+    var a=ACHIEVEMENTS[i];
+    if(unlockedAchievements.indexOf(a.id)===-1&&a.check()){
+      unlockedAchievements.push(a.id);
+      try{localStorage.setItem('booksdin_ach_'+ARTICLE_ID,JSON.stringify(unlockedAchievements));}catch(e){}
+      showAchievementToast(a);
+    }
+  }
+  renderAchievements();
+}
+function showAchievementToast(a){
+  var t=document.getElementById('ach-toast');
+  if(!t) return;
+  t.innerHTML=a.icon+' <b>'+a.title+'</b> — '+a.desc;
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},3000);
+}
+function renderAchievements(){
+  var panel=document.getElementById('panel-achievements');
+  if(!panel) return;
+  var html='<div class="ach-grid">';
+  for(var i=0;i<ACHIEVEMENTS.length;i++){
+    var a=ACHIEVEMENTS[i], unlocked=unlockedAchievements.indexOf(a.id)!==-1;
+    html+='<div class="ach-card '+(unlocked?'unlocked':'locked')+'">';
+    html+='<div class="ach-icon">'+a.icon+'</div>';
+    html+='<div><div class="ach-title">'+a.title+'</div><div class="ach-desc">'+a.desc+'</div></div>';
+    if(unlocked) html+='<div class="ach-badge">✓ OLINDI</div>';
+    html+='</div>';
+  }
+  html+='</div>';
+  var count=unlockedAchievements.length;
+  var tabEl=document.getElementById('tab-achievements');
+  if(tabEl) tabEl.textContent='🏆 YUTUQ ('+count+'/'+ACHIEVEMENTS.length+')';
+  panel.innerHTML=html;
+}
+
+// WRITING
+var writeIndex=0, writeOrder=[], writeCorrectW=0;
+window._writeCorrect=0;
+function initWriting(){
+  writeOrder=shuffleArray(vocab.map(function(v,i){return i;})).slice(0,10);
+  writeIndex=0; writeCorrectW=0;
+  renderWriting();
+}
+function renderWriting(){
+  var panel=document.getElementById('panel-writing');
+  if(!panel) return;
+  if(writeIndex>=writeOrder.length){
+    panel.innerHTML='<div class="write-result"><div class="result-emoji">'+(writeCorrectW>=8?'🎉':writeCorrectW>=5?'💪':'📚')+'</div>'+
+      '<div class="result-score"><span>'+writeCorrectW+'</span>/'+writeOrder.length+'</div>'+
+      '<div class="result-msg">'+Math.round(writeCorrectW/writeOrder.length*100)+'% to\'g\'ri</div>'+
+      '<button class="restart-btn" onclick="initWriting()">🔄 QAYTA</button></div>';
+    return;
+  }
+  var v=vocab[writeOrder[writeIndex]];
+  panel.innerHTML='<div class="write-container">'+
+    '<div class="write-progress"><div class="write-prog-fill" style="width:'+(writeIndex/writeOrder.length*100)+'%"></div></div>'+
+    '<div class="write-counter">'+(writeIndex+1)+' / '+writeOrder.length+' · ✓ '+writeCorrectW+'</div>'+
+    '<div class="write-card">'+
+    '<div class="write-label">O\'ZBEKCHA → INGLIZCHA YOZING</div>'+
+    '<div class="write-uz">'+v.uz+'  <span style="font-family:\'DM Mono\',monospace;font-size:11px;color:var(--text-muted);font-weight:400;">['+v.pos+']</span></div>'+
+    '<div class="write-def">'+v.def+'</div>'+
+    '<div class="write-uz-def">'+v.uzDef+'</div>'+
+    '<button class="speak-btn" onclick="speakWord(\''+v.en.replace(/'/g,"\\'")+'\')" >🔊 Eshitish</button>'+
+    '</div>'+
+    '<input class="write-input" id="writeInput" type="text" placeholder="Inglizcha yozing..." autocomplete="off" autocorrect="off" spellcheck="false">'+
+    '<div class="write-feedback" id="writeFeedback"></div>'+
+    '<div class="write-actions">'+
+    '<button class="write-check-btn" onclick="checkWriting(\''+v.en.replace(/'/g,"\\'")+'\')">✓ TEKSHIR</button>'+
+    '<button class="write-skip-btn" onclick="skipWriting()">→ O\'TKAZIB</button>'+
+    '</div></div>';
+  setTimeout(function(){var inp=document.getElementById('writeInput');if(inp)inp.focus();},100);
+  document.addEventListener('keydown',writeKeyH);
+}
+function writeKeyH(e){if(e.key==='Enter'){var v=vocab[writeOrder[writeIndex]];checkWriting(v.en);}}
+function checkWriting(correct){
+  document.removeEventListener('keydown',writeKeyH);
+  var input=document.getElementById('writeInput');if(!input) return;
+  var val=input.value.trim().toLowerCase();
+  input.disabled=true;
+  var fb=document.getElementById('writeFeedback');
+  if(val===correct.toLowerCase()){
+    writeCorrectW++; window._writeCorrect=writeCorrectW;
+    fb.className='write-feedback correct'; fb.innerHTML='✅ To\'g\'ri! <b>'+correct+'</b>';
+    checkAchievements();
+  } else {
+    fb.className='write-feedback wrong'; fb.innerHTML='❌ Noto\'g\'ri. To\'g\'ri: <b>'+correct+'</b>';
+  }
+  fb.style.display='block';
+  setTimeout(function(){writeIndex++;renderWriting();},1800);
+}
+function skipWriting(){document.removeEventListener('keydown',writeKeyH);writeIndex++;renderWriting();}
+
+// BUILD VOCAB CARD — with EN def + UZ def + translation
+function buildVocabCard(v) {
+  return '<div class="vocab-card">'+
+    '<div class="vc-num">#'+v.id+' · <span style="color:var(--accent2);font-size:9px;">'+v.pos+'</span></div>'+
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start">'+
+    '<div class="vc-en">'+v.en+'</div>'+
+    '<div style="display:flex;gap:6px">'+
+    '<button class="speak-mini-btn" onclick="speakWord(\''+v.en.replace(/'/g,"\\'")+'\')">🔊</button>'+
+    '<button class="fav-btn" data-id="'+v.id+'" onclick="toggleFav('+v.id+')">'+(isFav(v.id)?'⭐':'☆')+'</button>'+
+    '</div></div>'+
+    '<div class="vc-def">'+v.def+'</div>'+
+    '<div class="vc-uz-def">'+v.uzDef+'</div>'+
+    '<div class="vc-uz">'+v.uz+'</div>'+
+    '</div>';
+}
+function shuffleArray(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+window.addEventListener('DOMContentLoaded', function() {
+  renderVocabList(vocab);
+  renderFlashcard();
+  renderAchievements();
+  initWriting();
+});
+</script>
+</body>
+</html>

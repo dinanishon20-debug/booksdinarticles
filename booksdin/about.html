@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Haqida — @booksdin</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.about-hero {
+  padding: 80px 40px 60px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.about-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 30%, rgba(0,212,255,0.07) 0%, transparent 55%),
+              radial-gradient(ellipse at 20% 70%, rgba(200,255,0,0.05) 0%, transparent 55%);
+  pointer-events: none;
+}
+.page-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+.page-tag::before {
+  content:''; display:inline-block;
+  width:32px; height:1px; background: var(--accent);
+}
+.about-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 1;
+  letter-spacing: -1px;
+  position: relative;
+}
+.about-title span { color: var(--accent); }
+
+/* CONTENT */
+.about-content {
+  position: relative; z-index:1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.about-left {
+  padding: 60px 40px;
+  border-right: 1px solid var(--border);
+}
+.about-right {
+  padding: 60px 40px;
+}
+
+.about-block { margin-bottom: 48px; }
+.block-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.block-label::before {
+  content:''; display:inline-block;
+  width:20px; height:1px; background: var(--accent);
+}
+.block-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+.block-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.9;
+}
+
+.stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.stat-icon {
+  font-size: 24px;
+  width: 48px;
+  text-align: center;
+}
+.stat-info {}
+.stat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.social-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.25s;
+  border: 1px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.social-card.tg-card {
+  background: rgba(34,158,217,0.1);
+  border-color: rgba(34,158,217,0.25);
+}
+.social-card.ig-card {
+  background: rgba(220,39,67,0.08);
+  border-color: rgba(220,39,67,0.2);
+}
+.social-card:hover { transform: translateX(6px); }
+.sc-icon { font-size: 28px; }
+.sc-info {}
+.sc-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+.sc-desc {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+.sc-arrow {
+  margin-left: auto;
+  font-size: 20px;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+.social-card:hover .sc-arrow { color: var(--accent); transform: translateX(4px); }
+
+@media (max-width: 768px) {
+  .about-hero { padding: 60px 20px 40px; }
+  .about-content { grid-template-columns: 1fr; }
+  .about-left { padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--border); }
+  .about-right { padding: 40px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">@booksdin</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Bosh sahifa</a></li>
+    <li><a href="articles.html">Maqolalar</a></li>
+    <li><a href="about.html" class="active">Haqida</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://t.me/+WsS7Xf4HBFsxZGI6" target="_blank" class="tg">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.888l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.978.671z"/></svg>
+      Telegram
+    </a>
+    <a href="https://www.instagram.com/booksdin?igsh=MWhjN2JhM3pnZG5nZQ%3D%3D&utm_source=qr" target="_blank" class="ig">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      Instagram
+    </a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 Bosh sahifa</a>
+  <a href="articles.html">📚 Maqolalar</a>
+  <a href="about.html" class="active">💬 Haqida</a>
+  <a href="https://t.me/+WsS7Xf4HBFsxZGI6" target="_blank">📱 Telegram</a>
+  <a href="https://www.instagram.com/booksdin?igsh=MWhjN2JhM3pnZG5nZQ%3D%3D&utm_source=qr" target="_blank">📸 Instagram</a>
+</div>
+
+<main>
+  <div class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="page-tag">Kanal haqida</div>
+    <h1 class="about-title">BOOKSDIN <span>HAQIDA</span></h1>
+  </div>
+
+  <div class="about-content">
+    <div class="about-left">
+      <div class="about-block">
+        <div class="block-label">Maqsad</div>
+        <div class="block-title">NIMA UCHUN?</div>
+        <p class="block-text">
+          @booksdin — inglizcha maqolalar va kitoblardan olingan
+          eng qimmatli bilimlarni o'zbek tiliga moslashtirish uchun
+          yaratilgan kanal.<br><br>
+          Har maqoladan muhim so'zlar, iboralar va g'oyalar
+          tanlab olinadi — qidiruv, flashcard va quiz orqali
+          o'rganish mumkin.
+        </p>
+      </div>
+      <div class="about-block">
+        <div class="block-label">Qanday ishlaydi</div>
+        <div class="block-title">JARAYON</div>
+        <p class="block-text">
+          1. Inglizcha maqola o'qiladi<br><br>
+          2. Muhim so'z va iboralar tanlanadi<br><br>
+          3. O'zbek tiliga tarjima va ta'rif yoziladi<br><br>
+          4. Interaktiv dashboard yaratiladi<br><br>
+          5. Telegram va Instagram da e'lon qilinadi
+        </p>
+      </div>
+    </div>
+
+    <div class="about-right">
+      <div class="about-block">
+        <div class="block-label">Statistika</div>
+        <div class="block-title">RAQAMLARDA</div>
+        <div class="stat-list">
+          <div class="stat-item">
+            <div class="stat-icon">📚</div>
+            <div class="stat-info">
+              <div class="stat-val">1</div>
+              <div class="stat-lbl">MAQOLA (OSHIB BORADI)</div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">📝</div>
+            <div class="stat-info">
+              <div class="stat-val">55+</div>
+              <div class="stat-lbl">JAMI SO'ZLAR</div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-info">
+              <div class="stat-val">3</div>
+              <div class="stat-lbl">O'RGANISH REJIMI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <div class="block-label">Kanallar</div>
+        <div class="block-title">OBUNA BO'LING</div>
+        <div class="social-cards">
+          <a href="https://t.me/+WsS7Xf4HBFsxZGI6" target="_blank" class="social-card tg-card">
+            <div class="sc-icon">📱</div>
+            <div class="sc-info">
+              <div class="sc-name">TELEGRAM</div>
+              <div class="sc-desc">@booksdin · Asosiy kanal</div>
+            </div>
+            <div class="sc-arrow">→</div>
+          </a>
+          <a href="https://www.instagram.com/booksdin?igsh=MWhjN2JhM3pnZG5nZQ%3D%3D&utm_source=qr" target="_blank" class="social-card ig-card">
+            <div class="sc-icon">📸</div>
+            <div class="sc-info">
+              <div class="sc-name">INSTAGRAM</div>
+              <div class="sc-desc">@booksdin · Vizual kontent</div>
+            </div>
+            <div class="sc-arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">@booksdin</div>
+  <div class="footer-links">
+    <a href="index.html">Bosh sahifa</a>
+    <a href="articles.html">Maqolalar</a>
+    <a href="about.html">Haqida</a>
+    <a href="https://t.me/+WsS7Xf4HBFsxZGI6" target="_blank">Telegram</a>
+    <a href="https://www.instagram.com/booksdin?igsh=MWhjN2JhM3pnZG5nZQ%3D%3D&utm_source=qr" target="_blank">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 @booksdin · Kitoblar, Bilim, O'sish</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+</script>
+</body>
+</html>
