@@ -6,202 +6,35 @@
 <title>New Scientist Maqolalari — @booksdin</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.page-hero {
-  padding: 80px 40px 60px;
-  position: relative;
-  border-bottom: 1px solid var(--border);
-}
-.page-hero-bg {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 20% 50%, rgba(200,255,0,0.06) 0%, transparent 55%);
-  pointer-events: none;
-}
-.page-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.page-tag::before {
-  content:''; display:inline-block;
-  width:32px; height:1px;
-  background: var(--accent);
-}
-.page-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(48px, 8vw, 96px);
-  line-height: 1;
-  letter-spacing: -1px;
-  position: relative;
-}
-.page-title span { color: var(--accent); }
-
-.page-desc {
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  color: var(--text-dim);
-  margin-top: 16px;
-  line-height: 1.7;
-  position: relative;
-  max-width: 500px;
-}
-
-/* FILTER */
-.filter-bar {
-  position: relative; z-index:1;
-  padding: 24px 40px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
-}
-.filter-btn {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  padding: 8px 18px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: none;
-  color: var(--text-dim);
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.2s;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  -webkit-appearance: none;
-}
-.filter-btn.active, .filter-btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #080810;
-  font-weight: 700;
-}
-
-/* ARTICLES */
-.articles-section {
-  position: relative; z-index:1;
-  padding: 48px 40px;
-}
-.articles-count {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-bottom: 28px;
-}
-.articles-count span { color: var(--accent); }
-
-.articles-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.article-row {
-  display: grid;
-  grid-template-columns: 80px 1fr auto;
-  gap: 24px;
-  align-items: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px 28px;
-  text-decoration: none;
-  color: var(--text);
-  transition: all 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-.article-row::after {
-  content: '→';
-  position: absolute;
-  right: 28px;
-  font-size: 20px;
-  color: var(--accent);
-  opacity: 0;
-  transform: translateX(-8px);
-  transition: all 0.25s;
-}
-.article-row:hover {
-  border-color: rgba(200,255,0,0.3);
-  background: var(--surface2);
-  transform: translateX(6px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  padding-right: 56px;
-}
-.article-row:hover::after { opacity: 1; transform: translateX(0); }
-
-.ar-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 40px;
-  color: var(--text-muted);
-  line-height: 1;
-}
-.ar-content {}
-.ar-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.ar-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  line-height: 1.3;
-}
-.ar-desc {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--text-dim);
-  line-height: 1.6;
-}
-.ar-meta {
-  text-align: right;
-  flex-shrink: 0;
-}
-.ar-source {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-.ar-badge {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  letter-spacing: 1px;
-  display: inline-block;
-}
-.badge-green { background: rgba(0,212,255,0.08); color: var(--accent3); border: 1px solid rgba(0,212,255,0.2); }
-.badge-coming { background: rgba(112,112,160,0.1); color: var(--text-muted); border: 1px solid var(--border); }
-
-/* COMING SOON */
-.coming-soon {
-  opacity: 0.45;
-  cursor: default;
-  pointer-events: none;
-}
-
-@media (max-width: 768px) {
-  .page-hero { padding: 60px 20px 40px; }
-  .filter-bar { padding: 16px 20px; }
-  .articles-section { padding: 32px 20px; }
-  .article-row { grid-template-columns: 50px 1fr; gap: 14px; padding: 18px 20px; }
-  .ar-meta { display: none; }
-  .article-row::after { right: 16px; }
+.page-hero{padding:80px 40px 60px;position:relative;border-bottom:1px solid var(--border);}
+.page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(200,255,0,0.06) 0%,transparent 55%);pointer-events:none;}
+.page-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.page-tag::before{content:'';display:inline-block;width:32px;height:1px;background:var(--accent);}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);line-height:1;letter-spacing:-1px;}
+.page-title span{color:var(--accent);}
+.page-desc{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-dim);margin-top:16px;line-height:1.7;max-width:500px;}
+.articles-section{position:relative;z-index:1;padding:48px 40px;}
+.articles-count{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:28px;}
+.articles-count span{color:var(--accent);}
+.articles-list{display:flex;flex-direction:column;gap:16px;}
+.article-row{display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 28px;text-decoration:none;color:var(--text);transition:all 0.25s;position:relative;overflow:hidden;}
+.article-row::after{content:'→';position:absolute;right:28px;font-size:20px;color:var(--accent);opacity:0;transform:translateX(-8px);transition:all 0.25s;}
+.article-row:hover{border-color:rgba(200,255,0,0.3);background:var(--surface2);transform:translateX(6px);box-shadow:0 8px 32px rgba(0,0,0,0.3);padding-right:56px;}
+.article-row:hover::after{opacity:1;transform:translateX(0);}
+.ar-num{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--text-muted);line-height:1;}
+.ar-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;}
+.ar-title{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.3;}
+.ar-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);line-height:1.6;}
+.ar-meta{text-align:right;flex-shrink:0;}
+.ar-source{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:1px;margin-bottom:8px;}
+.ar-badge{font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border-radius:20px;letter-spacing:1px;display:inline-block;}
+.badge-green{background:rgba(0,212,255,0.08);color:var(--accent3);border:1px solid rgba(0,212,255,0.2);}
+@media(max-width:768px){
+  .page-hero{padding:60px 20px 40px;}
+  .articles-section{padding:32px 20px;}
+  .article-row{grid-template-columns:50px 1fr;gap:14px;padding:18px 20px;}
+  .ar-meta{display:none;}
+  .article-row::after{right:16px;}
 }
 </style>
 </head>
@@ -235,16 +68,15 @@
   <a href="https://www.instagram.com/booksdin?igsh=MWhjN2JhM3pnZG5nZQ%3D%3D&utm_source=qr" target="_blank">📸 Instagram</a>
 </div>
 
-
 <main>
   <div class="page-hero">
     <div class="page-hero-bg"></div>
-    <div class="page-tag"><a href="articles.html" style="color:var(--accent); text-decoration:none;">← Kitobxona</a></div>
+    <div class="page-tag"><a href="articles.html" style="color:var(--accent);text-decoration:none;">← Kitobxona</a></div>
     <h1 class="page-title">NEW SCIENTIST <span>MAQOLALARI</span></h1>
     <p class="page-desc">New Scientist jurnalidan inglizcha maqolalar. Har biri uchun flashcard, qidiruv va quiz.</p>
   </div>
   <section class="articles-section">
-    <div class="articles-count"><span>5</span> ta maqola</div>
+    <div class="articles-count"><span>6</span> ta maqola</div>
     <div class="articles-list">
 
       <a href="article-brain.html" class="article-row">
@@ -312,6 +144,19 @@
         </div>
       </a>
 
+      <a href="article-rules-schools.html" class="article-row">
+        <div class="ar-num">06</div>
+        <div class="ar-content">
+          <div class="ar-tag">Maktab · Qoidalar · Ta'lim</div>
+          <div class="ar-title">Rules at Schools</div>
+          <div class="ar-desc">Maktab qoidalari nima uchun kerak? O'quvchilarni himoya qilish va xulq-atvor normalari haqida 14 ta ibora.</div>
+        </div>
+        <div class="ar-meta">
+          <div class="ar-source">New Scientist<br>2026</div>
+          <span class="ar-badge badge-green">14 so'z</span>
+        </div>
+      </a>
+
     </div>
   </section>
 </main>
@@ -329,16 +174,7 @@
 </footer>
 
 <script>
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-var filterBtns = document.querySelectorAll('.filter-btn');
-for (var i=0; i<filterBtns.length; i++) {
-  filterBtns[i].addEventListener('click', function() {
-    for (var j=0; j<filterBtns.length; j++) filterBtns[j].classList.remove('active');
-    this.classList.add('active');
-  });
-}
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
 </script>
 </body>
 </html>
